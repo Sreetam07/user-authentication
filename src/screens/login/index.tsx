@@ -4,44 +4,34 @@ import { AuthContext } from "../../context/AuthContext";
 import { styles } from "./index.style";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../types/navigationTypes";
-type Props = NativeStackScreenProps<RootStackParamList, "Signup">;
 
-const SignupScreen = ({ navigation }: Props) => {
-  const { signup } = useContext(AuthContext);
+type Props = NativeStackScreenProps<RootStackParamList, "Login">;
 
-  const [name, setName] = useState("");
+const LoginScreen = ({ navigation }: Props) => {
+  const { login } = useContext(AuthContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSignup = async () => {
-    if (!name || !email || !password) {
-      setError("All fields are required");
-      return;
+  const handleLogin = async () => {
+    try {
+      await login(email, password);
+    } catch (e) {
+      setError("Invalid credentials");
     }
-
-    if (password.length < 6) {
-      setError("Password must be 6 characters");
-      return;
-    }
-
-    await signup(name, email, password);
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Signup</Text>
+      <Text style={styles.title}>Login</Text>
 
-      <TextInput
-        placeholder="Name"
-        style={styles.input}
-        onChangeText={setName}
-      />
       <TextInput
         placeholder="Email"
         style={styles.input}
         onChangeText={setEmail}
       />
+
       <TextInput
         placeholder="Password"
         secureTextEntry
@@ -51,14 +41,14 @@ const SignupScreen = ({ navigation }: Props) => {
 
       {error ? <Text style={styles.error}>{error}</Text> : null}
 
-      <Button title="Signup" onPress={handleSignup} />
+      <Button title="Login" onPress={handleLogin} />
 
       <Button
-        title="Go to Login"
-        onPress={() => navigation.navigate("Login")}
+        title="Go to Signup"
+        onPress={() => navigation.navigate("Signup")}
       />
     </View>
   );
 };
 
-export default SignupScreen;
+export default LoginScreen;
