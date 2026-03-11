@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { AuthContext } from "../../context/AuthContext";
 import { styles } from "./index.style";
 
@@ -8,12 +8,16 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome</Text>
+      <View style={styles.card}>
+        <Text style={styles.title}>Welcome </Text>
 
-      <Text>Name: {user?.name}</Text>
-      <Text>Email: {user?.email}</Text>
+        <Text style={styles.text}>Name: {user?.name}</Text>
+        <Text style={styles.text}>Email: {user?.email}</Text>
 
-      <Button title="Logout" onPress={logout} />
+        <TouchableOpacity style={styles.button} onPress={logout}>
+          <Text style={styles.buttonText}>Logout</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
