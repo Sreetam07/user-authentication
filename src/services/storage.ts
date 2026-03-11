@@ -9,7 +9,3 @@ export const getUser = async (): Promise<User | null> => {
   const data = await AsyncStorage.getItem("user");
   return data ? (JSON.parse(data) as User) : null;
 };
-
-export const removeUser = async (): Promise<void> => {
-  await AsyncStorage.removeItem("user");
-};

@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import { AuthContextType, User } from "../types/authTypes";
-import { saveUser, getUser, removeUser } from "../services/storage";
+import { saveUser, getUser } from "../services/storage";
 
 export const AuthContext = createContext<AuthContextType>({
   user: null,
@@ -42,7 +42,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const logout = async () => {
-    await removeUser();
     setUser(null);
   };
 
