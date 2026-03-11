@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.white,
     padding: 20,
     borderRadius: 12,
-    shadowColor: "#000",
+    shadowColor: colors.black,
     shadowOpacity: 0.1,
     shadowRadius: 10,
     elevation: 5,
@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
   },
 
   buttonText: {
-    color: "#fff",
+    color: colors.white,
     textAlign: "center",
     fontWeight: "600",
     fontSize: 16,

@@ -6,4 +6,5 @@ export const colors = {
   inputBorder: "#D1D5DB",
   error: "#EF4444",
   white: "#FFFFFF",
+  black: "#000000",
 };
